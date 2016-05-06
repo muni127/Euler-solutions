@@ -1,4 +1,7 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
+
+import sun.security.util.BitArray;
 
 public class main {
 	public static void main(String[] args) {
@@ -8,6 +11,7 @@ public class main {
 		x.Q3();
 		x.Q4();
 		x.Q5();
+		x.Q10();
 	}
 	
 	public void Q1() {
@@ -75,6 +79,38 @@ public class main {
 				}
 			}
 		}
+	}
+	
+	public void Q10() {
+		double sum = 0;
+		int n = 2000000;
+		int nSieve = (int)(n - 1) / 2;
+	    int nSqrt = ((int)Math.sqrt(n) - 1) / 2;
+		BitArray list = new BitArray(nSieve + 1);
+		for (int i = 1; i <= nSieve; i++) {
+			list.set(i, true);
+		}
+		for (int i = 1; i <= nSqrt; i++) {
+	        if (list.get(i)) {
+	            for (int j = i * 2 * (i + 1); j <= nSieve; j += 2 * i + 1) {
+	                list.set(j, false);
+	            }
+	        }
+	    }
+		if (n >= 2) {
+			sum += 2;
+		}
+		for (int y = 1; y <= nSieve; y++) {
+			if (list.get(y)) {
+				sum += 2 * y + 1;
+			}
+		}
+		BigDecimal x = new BigDecimal(sum);
+		System.out.println("Q10: " + x);
+	}
+	
+	public void Q15() {
+		
 	}
 	
 	public Boolean checkPalindrome(String z) {
