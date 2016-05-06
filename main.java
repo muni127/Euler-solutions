@@ -85,7 +85,7 @@ public class main {
 		double sum = 0;
 		int n = 2000000;
 		int nSieve = (int)(n - 1) / 2;
-	    int nSqrt = ((int)Math.sqrt(n) - 1) / 2;
+	    	int nSqrt = ((int)Math.sqrt(n) - 1) / 2;
 		BitArray list = new BitArray(nSieve + 1);
 		for (int i = 1; i <= nSieve; i++) {
 			list.set(i, true);
