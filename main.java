@@ -37,40 +37,25 @@ public class main {
 	public void Q3() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		double x = 600851475143.0; 
-		while (x > 1) {
-			if (checkPrime((int) x)){
-				System.out.println("Q3: " + (int) x);
-				break;
-			}
-			for (int y = 2; y <= Math.sqrt(x); y++) {
-				if (checkPrime(y) && x%y == 0) {
+		for (int y = 2; y <= Math.sqrt(x); y++) {
+			if (checkPrime(y) && x%y == 0) {
 					list.add(y);
-					x /= y;
-					break;
 				}
 			}
-		}
+		System.out.println("Q3: " + list.get(list.size() - 1));
 	}
 	
 	public void Q4() {
-		boolean loopSwitch = false; 
-		for (int x = 999;x > 0;) {
-			for (int y = 999;y > 0;) {
+		int largest = 0;
+		for (int x = 999;x > 0; x--) {
+			for (int y = 999;y > 0; y--) {
 				String z = String.valueOf(x*y);
-				if (checkPalindrome(z)) {
-					System.out.println("Q4: " + z);
-					return;
-				}
-				if (loopSwitch) {
-					x--;
-					loopSwitch = false;
-				}
-				else {
-					y--;
-					loopSwitch = true;
-				}
+				if (checkPalindrome(z) && x*y > largest) {
+					largest = x*y;
+				} 
 			}
 		}
+		System.out.println("Q4: " + largest);
 	}
 	
 	public void Q5() {
